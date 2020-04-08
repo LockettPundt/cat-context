@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+/* eslint-disable react/jsx-filename-extension */
+import React, { useReducer } from 'react';
 import './App.css';
+import { StateProvider } from './context';
 
-function App() {
+
+const App = () => {
+  const initialState = {
+    name: 'lockett',
+    activity: 'coding',
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      default:
+        return state;
+    }
+  };
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StateProvider value={useReducer(reducer, initialState)}>
+        <h1>
+          Hi there.
+        </h1>
+      </StateProvider>
     </div>
   );
-}
+};
 
 export default App;
