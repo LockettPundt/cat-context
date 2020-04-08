@@ -8,22 +8,23 @@ const Button = styled.button`
   margin: 1vw;
 `;
 
-const handleClick = (e, dispatch) => {
-  e.preventDefault();
-  dispatch({
-    type: 'ACTION_CHANGE_ACTIVITY',
-    activity: e.target.value,
-  });
-};
 
 const CatActivityButtons = () => {
   const [value, dispatch] = useContext(StateContext);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'ACTION_CHANGE_ACTIVITY',
+      activity: e.target.value,
+    });
+  };
+
   return (
     <>
-      <Button value="sleeping" onClick={(e) => handleClick(e, dispatch)}>Sleeping</Button>
-      <Button value="eating" onClick={(e) => handleClick(e, dispatch)}>Eating</Button>
-      <Button value="playing" onClick={(e) => handleClick(e, dispatch)}>Playing</Button>
+      <Button value="sleeping" onClick={(e) => handleClick(e)}>Sleeping</Button>
+      <Button value="eating" onClick={(e) => handleClick(e)}>Eating</Button>
+      <Button value="playing" onClick={(e) => handleClick(e)}>Playing</Button>
     </>
   );
 };
